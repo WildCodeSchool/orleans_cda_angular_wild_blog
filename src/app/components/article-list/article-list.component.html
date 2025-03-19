@@ -1,0 +1,8 @@
+<article>
+  <p>Titre : {{ article.title }}</p>
+  <p>Créé le : {{ article.createdAt | date:'dd/MM/yyyy'  }}</p>
+  <p>Catégorie : {{ article.categoryName }}</p>
+  <p>Nombre de like : {{ article.likeCount }}</p>
+  <p>Contenu : {{ article.content }}</p>
+  <img [src]="article.image" [alt]="article.title">
+</article>
