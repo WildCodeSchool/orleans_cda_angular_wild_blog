@@ -1,8 +1,14 @@
-<article>
-  <p>Titre : {{ article.title }}</p>
-  <p>Créé le : {{ article.createdAt | date:'dd/MM/yyyy'  }}</p>
-  <p>Catégorie : {{ article.categoryName }}</p>
-  <p>Nombre de like : {{ article.likeCount }}</p>
-  <p>Contenu : {{ article.content }}</p>
-  <img [src]="article.image" [alt]="article.title">
-</article>
+@for (article of articles; track article.id) {
+  @if (article.isPublished) {
+    <article [ngClass]="{'popular-article': article.likeCount > 200 }">
+      <p>Titre : {{ article.title }}</p>
+      <p>Créé le : {{ article.createdAt | date : "dd/MM/yyyy" }}</p>
+      <p>Catégorie : {{ article.categoryName }}</p>
+      <p>Nombre de like : {{ article.likeCount }}</p>
+      <p>Contenu : {{ article.content }}</p>
+      <img [src]="article.image" [alt]="article.title" />
+    </article>
+  }
+} @empty {
+<p>Rien à afficher</p>
+}
