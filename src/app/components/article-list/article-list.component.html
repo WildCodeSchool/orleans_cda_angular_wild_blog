@@ -1,14 +1,33 @@
-@for (article of articles; track article.id) {
-  @if (article.isPublished) {
-    <article [ngClass]="{'popular-article': article.likeCount > 200 }">
-      <p>Titre : {{ article.title }}</p>
-      <p>Créé le : {{ article.createdAt | date : "dd/MM/yyyy" }}</p>
-      <p>Catégorie : {{ article.categoryName }}</p>
-      <p>Nombre de like : {{ article.likeCount }}</p>
-      <p>Contenu : {{ article.content }}</p>
-      <img [src]="article.image" [alt]="article.title" />
-    </article>
+<h2>Articles Populaires</h2>
+<div class="main-container">
+  @for (article of articles; track article.id) { @if (article.isPublished) {
+  <div
+    class="article-thumbnail"
+    [ngClass]="{ 'popular-article': article.likeCount > 200 }"
+  >
+    <div class="article-thumbnail__image-container">
+      <img
+        [src]="article.image"
+        alt="Image de l'article"
+        class="article-thumbnail__image"
+      />
+      <span class="article-thumbnail__tag">{{ article.categoryName }}</span>
+    </div>
+    <div class="article-thumbnail__content">
+      <p class="article-thumbnail__like-count">{{ article.likeCount }} like</p>
+      <p class="article-thumbnail__date">
+        {{ article.createdAt | date : "dd/MM/yyyy" }}
+      </p>
+      <a [routerLink]="['/article', article.id]">
+        <h2 class="article-thumbnail__title">{{ article.title }}</h2>
+      </a>
+
+      <p class="article-thumbnail__excerpt">
+        {{ article.content }}
+      </p>
+    </div>
+  </div>
+  } } @empty {
+  <p>Rien à afficher</p>
   }
-} @empty {
-<p>Rien à afficher</p>
-}
+</div>
