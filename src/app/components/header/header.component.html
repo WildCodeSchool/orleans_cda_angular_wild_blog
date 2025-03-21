@@ -2,10 +2,10 @@
   <div class="header-top">
     <span class="header-logo">Jane DOE</span>
     <nav class="header-nav">
-      <a href="#">Accueil</a>
+      <a [routerLink]="['/']">Accueil</a>
       <a href="#">Articles</a>
       <a href="#">L'École</a>
-      <a href="#">Contact</a>
+      <a [routerLink]="['/contact']">Contact</a>
       <button class="header-button" (click)="navigateToSignUpPage()">M'inscrire</button>
     </nav>
   </div>
