@@ -1,0 +1,90 @@
+<form #contactForm="ngForm" (ngSubmit)="contactForm.valid && onSubmit()">
+  <fieldset>
+    <label for="lastname">Nom</label>
+    <input
+      id="lastname"
+      name="lastname"
+      type="text"
+      [(ngModel)]="newMessage.lastname"
+      #lastname="ngModel"
+      required
+      minlength="2"
+    />
+    @if (lastname.errors && lastname.touched && lastname.dirty) {
+    <div>
+      @if (lastname.errors['required']) {
+      <span>Le nom est requis</span>
+      } @if (lastname.errors['minlength']) {
+      <span>La longueur minimale doit être supérieure à 2</span>
+      }
+    </div>
+    }
+  </fieldset>
+  <fieldset>
+    <label for="firstname">Prénom</label>
+    <input
+      id="firstname"
+      name="firstname"
+      type="text"
+      [(ngModel)]="newMessage.firstname"
+      #firstname="ngModel"
+      required
+      minlength="2"
+    />
+    @if (firstname.errors && firstname.touched && firstname.dirty) {
+    <div>
+      @if (firstname.errors['required']) {
+      <span>Le prénom est requis</span>
+      } @if (firstname.errors['minlength']) {
+      <span>La longueur minimale doit être supérieure à 2</span>
+      }
+    </div>
+    }
+  </fieldset>
+  <fieldset>
+    <label for="email">Contact</label>
+    <input
+      id="email"
+      name="email"
+      type="email"
+      [(ngModel)]="newMessage.email"
+      #email="ngModel"
+      required
+      email
+    />
+    @if (email.errors && email.touched && email.dirty) {
+    <div>
+      @if (email.errors['required']) {
+      <span>L'email est requis</span>
+      } @if (email.errors['email']) {
+      <span>Veuillez fournir une adresse email valide</span>
+      }
+    </div>
+    }
+  </fieldset>
+  <fieldset>
+    <label for="content">Contenu du message</label>
+    <textarea
+      id="content"
+      name="content"
+      [(ngModel)]="newMessage.content"
+      #content="ngModel"
+      required
+      minlength="20"
+      rows="4"
+      cols="50"
+    ></textarea>
+    @if (content.errors && content.touched && content.dirty) {
+    <div>
+      @if (content.errors['required']) {
+      <span>Le contenu du message est requis</span>
+      } @if (content.errors['minlength']) {
+      <span>Le contenu doit comporter au moins 20 caractères</span>
+      }
+    </div>
+    }
+  </fieldset>
+
+  <button type="reset">Restaurer</button>
+  <button type="submit" [disabled]="contactForm.invalid">Envoyer</button>
+</form>
