@@ -1,7 +1,7 @@
 <h2>Articles Populaires</h2>
 <div class="main-container">
   @for (article of articles; track article.id) { @if (article.isPublished) {
-    <app-article-thumbnail [article]="article"></app-article-thumbnail>
+    <app-article-thumbnail [article]="article" (notifyLike)="handleLike($event)"></app-article-thumbnail>
   } } @empty {
   <p>Rien à afficher</p>
   }

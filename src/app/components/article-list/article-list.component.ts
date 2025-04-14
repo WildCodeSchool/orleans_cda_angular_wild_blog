@@ -22,7 +22,7 @@ export class ArticleListComponent {
       likeCount: 233,
       isPublished: true,
       categoryName: 'Angular',
-      isLiked: false,
+      isLiked: true,
     },
     {
       id: 2,
@@ -190,4 +190,8 @@ export class ArticleListComponent {
       isLiked: false,
     },
   ];
+
+  handleLike(article: Article) {
+    article.isLiked = !article.isLiked;
+  }
 }
