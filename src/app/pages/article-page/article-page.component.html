@@ -1,1 +1,5 @@
-<p>L'ID de l'article est {{ articleId }} </p>
+<p>L'ID de l'article est {{ articleId }}</p>
+
+@if (article$ | async; as article ) {
+  <app-article-thumbnail [article]="article"></app-article-thumbnail>
+}
